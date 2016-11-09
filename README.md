@@ -1,6 +1,6 @@
 ## **FireBox**
 
-Python library for connect PC to Arduino through Serial port
+Python library for connecting PC to Arduino through Serial port
 
 ``` python
 import firebox as fb
