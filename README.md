@@ -1,6 +1,7 @@
 ## **FireBox**
 
-Pyhon библиотека для взаимодействия с устройствами по последовательному порту. 
+Python library for connect PC to Arduino through Serial port
+
 ``` python
 import firebox as fb
 
@@ -12,36 +13,34 @@ if(serPort):
 ```
 
 
-#### Особенности:
-* Определение порта устройства по имени
-* Возможность передачи передачи передача команд.
+#### Features:
+* Serch device on a name
+* Packet transmission commands to device
 
-#### <i class="icon-anchor"> Импорт библиотеки
+#### <i class="icon-anchor"> Import library
 ``` python
 import firebox as fb
 ```
-#### <i class="icon-search"> Поиск устройства
+#### <i class="icon-search"> Find device
 
 ``` python
 serPort = fb.findDevice('stimulator')
 ```
-###### Необязательные аргументы: 
-> Если для Вас критично время ответа, то выполняйте данный код в начале вашего скрипта.
 
-#### <i class="icon-male"> Тело запроса
+#### <i class="icon-male"> Request body
 
 ``` python
 data = []
 data.append("<fire,200,5>")
 ```
-Запрос заключен в стоп символы **< ... >**, принимает 3 аргумента, первый из которых является строковым типом, остальные целочисленными.
+The request concluded in stop characters ** <...> ** it takes 3 arguments, first is a string, other is integers.
 
-#### <i class="icon-flash"> Команда
+#### <i class="icon-flash"> Command
 
 ``` python
 fb.sendMessage(serPort,data)
 ```
-В случае успешной передачи данных в консоли появится
+If the data transfer is successful, you can to see next message in console, 
 ```
 =========== 
 Sent from PC -- LOOP NUM 0 TEST STR <fire,200,5>
@@ -50,43 +49,34 @@ Timing: 0.213000059128
 ===========
 ```
 
-#### <i class="icon-book">  Реализованные методы.
+#### <i class="icon-book">  Methods.
 
-#####  Список портов
+#####  List of ports
 ``` python
 serialPorts()
 ```
-#####  Открытие порта
+#####  Open port
 ``` python
 openSerial(serPort, baudRate)
-# serPort - порт назначения
-# baudRate - скорость порта
 ```
-#####  Отправка данных на устройство
+#####  send message on to the device
 ``` python
 sendToArduino(sendStr)
-# sendStr- произвольная строка
 ```
-##### Получение данных с устройства
+##### recive message
 ``` python
 recvFromArduino()
 ```
-##### Ожидание ответа устройства
+##### waiting device
 ``` python
 waitForArduino()
 ```
-##### Отправка сообщения
+##### Send message
 ``` python
 sendMessage(serPort,td, baudRate=19200)
-# serPort - порт назначения
-# td - массив команд
-# baudRate - скорость порта
 ```
-##### Поиск устройства
+##### Find device
 ``` python
 findDevice(devName,baudRate=19200,numDev=0)
-# devName- имя устройства
-# baudRate - скорость порта
-# numDev - уникальный идентификатор устройства (в случае использования нескольких однотипных устройств)
 ```
 
